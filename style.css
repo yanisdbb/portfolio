@@ -1,50 +1,54 @@
-:root {
-    --primary: #4f46e5; /* Bleu électrique */
-    --accent: #a855f7; /* Violet */
-    --text: #1f2937;
-    --bg: #f9fafb;
-}
+/* ... Garder les variables précédentes ... */
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    background-color: var(--bg);
-    margin: 0;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 5%;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-header {
-    text-align: center;
-    padding: 100px 5%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-}
-
-.image-placeholder {
-    background: #e5e7eb;
-    height: 200px;
+.hero-content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    margin: 20px 0;
-    border: 2px dashed #9ca3af;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-.wip-box {
-    border: 3px solid var(--accent);
-    padding: 40px;
-    text-align: center;
-    border-radius: 15px;
-    margin: 50px 0;
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Photo ronde */
+    border: 5px solid white;
+    object-fit: cover;
+    background: #ccc; /* Fond si pas d'image */
 }
 
-section { padding: 50px 10%; }
+.about-me {
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+}
