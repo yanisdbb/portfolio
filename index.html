@@ -1,26 +1,73 @@
-<section id="about" class="glass-section" style="max-width: 800px; margin: 0 auto; padding: 30px;">
-    <h2>À propos</h2>
-    <p>
-        Étudiant en <strong>Réseaux et Télécommunications</strong> à Blois et actuellement apprenti au <strong>CHRU de Tours</strong>. 
-        Je me passionne pour les infrastructures réseaux et l'organisation d'événements technologiques. 
-        Mon parcours est guidé par l'envie d'apprendre et de relever des défis techniques concrets.
-    </p>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDB | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="networkCanvas"></canvas>
 
-<section id="projets">
-    <div class="grid">
-        <div class="card glass" onclick="window.location.href='rt-lan.html'">
-            <div class="card-image">[IMAGE RT-LAN]</div>
-            <div class="card-content">
-                <h3>RT-LAN 2026</h3>
-                <p>
-                    Compétition multi-gaming de 30h gérée en plein examen. 
-                    Mise en place d'une infra <strong>Cisco/Proxmox</strong> pour 30+ participants. 
-                    Succès sur Twitch avec 400 vues uniques.
-                </p>
-                <span style="font-size: 0.8rem; font-weight: bold; color: var(--primary);">Voir le détail technique →</span>
+    <nav>
+        <div class="logo-ydb">YDB</div>
+        <div class="nav-links">
+            <a href="#projets">Projets</a>
+            <a href="#about">Profil</a>
+        </div>
+    </nav>
+
+    <header class="hero-light">
+        <div class="hero-container">
+            <div class="photo-placeholder-wrapper">
+                <img src="votre-photo.jpg" alt="Yanis" class="photo-profile">
+            </div>
+            <div class="hero-text">
+                <h1>Yanis D. B.</h1>
+                <p class="subtitle">Étudiant en Réseaux & Télécommunications</p>
             </div>
         </div>
-        
+    </header>
+
+    <section id="about" class="glass-card">
+        <h3>Profil</h3>
+        <p>
+            Étudiant en <strong>Réseaux et Télécommunications</strong> à Blois et apprenti ingénieur au <strong>CHRU de Tours</strong>. 
+            Je me spécialise dans les infrastructures critiques et l'organisation d'événements technologiques, alliant rigueur technique et esprit d'initiative.
+        </p>
+    </section>
+
+    <section id="projets">
+        <div class="grid">
+            <div class="card glass" onclick="window.location.href='rt-lan.html'">
+                <div class="card-image">[APPERÇU RT-LAN]</div>
+                <div class="card-content">
+                    <h3>RT-LAN 2026</h3>
+                    <p>Compétition multi-gaming de 30h gérée en autonomie.</p>
+                    <button class="btn-small">Voir le projet</button>
+                </div>
+            </div>
+
+            <div class="card glass" onclick="window.location.href='chru.html'">
+                <div class="card-image">[APPERÇU CHRU]</div>
+                <div class="card-content">
+                    <h3>CHRU de Tours</h3>
+                    <p>Infrastructures multimédias et télécoms hospitalières.</p>
+                    <button class="btn-small">Détails techniques</button>
+                </div>
+            </div>
+
+            <div class="card glass">
+                <div class="card-content">
+                    <span class="badge-wip">Work in progress</span>
+                    <h3>Projet IoT</h3>
+                    <p>Développement de solutions connectées en cours.</p>
+                </div>
+            </div>
         </div>
-</section>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
