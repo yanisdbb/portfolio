@@ -1,73 +1,26 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YDB | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <canvas id="networkCanvas"></canvas>
+<section id="about" class="glass-section" style="max-width: 800px; margin: 0 auto; padding: 30px;">
+    <h2>À propos</h2>
+    <p>
+        Étudiant en <strong>Réseaux et Télécommunications</strong> à Blois et actuellement apprenti au <strong>CHRU de Tours</strong>. 
+        Je me passionne pour les infrastructures réseaux et l'organisation d'événements technologiques. 
+        Mon parcours est guidé par l'envie d'apprendre et de relever des défis techniques concrets.
+    </p>
+</section>
 
-    <nav>
-        <div class="logo-ydb">YDB</div> <div class="nav-links">
-            <a href="#projets">Projets</a>
-            <a href="#about">À propos</a>
-        </div>
-    </nav>
-
-    <header class="vibrant-hero">
-        <div class="hero-container">
-            <div class="photo-wrapper">
-                <img src="ta-photo.jpg" alt="Yanis" class="photo-main">
-            </div>
-            <div class="text-content">
-                <h1 class="glitch-text">Yanis D. B.</h1>
-                <p class="tagline">Apprenti Ingénieur en Réseaux & Télécoms</p>
-                <div class="status-badge">Disponible pour de nouveaux défis</div>
+<section id="projets">
+    <div class="grid">
+        <div class="card glass" onclick="window.location.href='rt-lan.html'">
+            <div class="card-image">[IMAGE RT-LAN]</div>
+            <div class="card-content">
+                <h3>RT-LAN 2026</h3>
+                <p>
+                    Compétition multi-gaming de 30h gérée en plein examen. 
+                    Mise en place d'une infra <strong>Cisco/Proxmox</strong> pour 30+ participants. 
+                    Succès sur Twitch avec 400 vues uniques.
+                </p>
+                <span style="font-size: 0.8rem; font-weight: bold; color: var(--primary);">Voir le détail technique →</span>
             </div>
         </div>
-    </header>
-
-    <section id="about" class="glass-section">
-        <h2>Profil</h2>
-        <p>
-            Actuellement apprenti au <strong>CHRU de Tours</strong>, je combine une expertise technique en infrastructures critiques (DECT sur IP, réseaux hospitaliers) avec une passion pour l'événementiel tech. 
-            Mon approche ? Allier la rigueur des protocoles <strong>Cisco</strong> à la créativité du graphisme.
-        </p>
-    </section>
-
-    <section id="projets">
-        <div class="grid">
-            <div class="card glass" onclick="window.location.href='rt-lan.html'">
-                <div class="card-image">[IMAGE RT-LAN]</div>
-                <div class="card-content">
-                    <h3>RT-LAN 2026</h3>
-                    <p>30h de compétition, 30 joueurs, infra Cisco & Proxmox.</p>
-                    <span class="view-more">Découvrir le projet →</span>
-                </div>
-            </div>
-
-            <div class="card glass" onclick="window.location.href='chru.html'">
-                <div class="card-image">[IMAGE CHRU]</div>
-                <div class="card-content">
-                    <h3>CHRU de Tours</h3>
-                    <p>Gestion d'infrastructures multimédias et télécoms hospitalières.</p>
-                    <span class="view-more">Voir mon rôle →</span>
-                </div>
-            </div>
-
-            <div class="card glass" onclick="window.location.href='iot.html'">
-                <div class="card-content">
-                    <div class="wip-tag">Work in progress</div>
-                    <h3>Projet IoT</h3>
-                    <p>Systèmes connectés et protocoles émergents.</p>
-                </div>
-            </div>
+        
         </div>
-    </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</section>
