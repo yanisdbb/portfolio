@@ -3,70 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanis D. B. | Portfolio</title>
+    <title>YDB | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <canvas id="networkCanvas"></canvas>
+
     <nav>
-        <div class="logo">YDB</div>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="#projets">Projets</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="logo-ydb">YDB</div> <div class="nav-links">
+            <a href="#projets">Projets</a>
+            <a href="#about">À propos</a>
+        </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="profile-pic-container">
-                <img src="photo-yanis.jpg" alt="Yanis D. B." class="profile-pic">
+    <header class="vibrant-hero">
+        <div class="hero-container">
+            <div class="photo-wrapper">
+                <img src="ta-photo.jpg" alt="Yanis" class="photo-main">
             </div>
-            <div class="hero-text">
-                <h1>Yanis D. B.</h1>
-                <p>Étudiant en Réseaux & Télécommunications | Apprenti Ingénieur</p>
-                <p class="about-me">
-                    Passionné par l'infrastructure réseau et les nouvelles technologies, je suis actuellement apprenti ingénieur au <strong>CHRU de Tours</strong>. 
-                    Mon parcours allie rigueur technique et créativité, que ce soit dans le déploiement de solutions télécoms critiques, l'organisation d'événements e-sport ou le graphisme. 
-                    Basé à Blois, je cultive également un esprit d'équipe et de sécurité forgé par mes expériences d'encadrant d'escalade.
-                </p>
+            <div class="text-content">
+                <h1 class="glitch-text">Yanis D. B.</h1>
+                <p class="tagline">Apprenti Ingénieur en Réseaux & Télécoms</p>
+                <div class="status-badge">Disponible pour de nouveaux défis</div>
             </div>
         </div>
     </header>
 
-    <section id="projets" class="grid-container">
-        <h2>Mes Projets</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <a href="rt-lan.html">
-                    <div class="image-placeholder">[IMAGE RT-LAN]</div>
-                </a>
-                <h3>RT-LAN 2026</h3>
-                <p>Organisation d'une LAN multi-gaming (Cisco/Proxmox).</p>
-                <a href="rt-lan.html" class="btn">Voir le projet</a>
+    <section id="about" class="glass-section">
+        <h2>Profil</h2>
+        <p>
+            Actuellement apprenti au <strong>CHRU de Tours</strong>, je combine une expertise technique en infrastructures critiques (DECT sur IP, réseaux hospitaliers) avec une passion pour l'événementiel tech. 
+            Mon approche ? Allier la rigueur des protocoles <strong>Cisco</strong> à la créativité du graphisme.
+        </p>
+    </section>
+
+    <section id="projets">
+        <div class="grid">
+            <div class="card glass" onclick="window.location.href='rt-lan.html'">
+                <div class="card-image">[IMAGE RT-LAN]</div>
+                <div class="card-content">
+                    <h3>RT-LAN 2026</h3>
+                    <p>30h de compétition, 30 joueurs, infra Cisco & Proxmox.</p>
+                    <span class="view-more">Découvrir le projet →</span>
+                </div>
             </div>
 
-            <div class="project-card">
-                <a href="chru.html">
-                    <div class="image-placeholder">[IMAGE CHRU]</div>
-                </a>
-                <h3>Infrastructure Critique</h3>
-                <p>Apprentissage au sein de la DSI du CHRU de Tours.</p>
-                <a href="chru.html" class="btn">Détails techniques</a>
+            <div class="card glass" onclick="window.location.href='chru.html'">
+                <div class="card-image">[IMAGE CHRU]</div>
+                <div class="card-content">
+                    <h3>CHRU de Tours</h3>
+                    <p>Gestion d'infrastructures multimédias et télécoms hospitalières.</p>
+                    <span class="view-more">Voir mon rôle →</span>
+                </div>
             </div>
 
-            <div class="project-card">
-                <a href="iot.html">
-                    <div class="image-placeholder">[IMAGE IoT]</div>
-                </a>
-                <h3>Projet IoT</h3>
-                <p>Développement de solutions connectées (En cours).</p>
-                <a href="iot.html" class="btn">Suivre l'avancée</a>
+            <div class="card glass" onclick="window.location.href='iot.html'">
+                <div class="card-content">
+                    <div class="wip-tag">Work in progress</div>
+                    <h3>Projet IoT</h3>
+                    <p>Systèmes connectés et protocoles émergents.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Yanis D. B. | Étudiant R&T Blois</p>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
