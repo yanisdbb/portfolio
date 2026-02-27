@@ -1,73 +1,52 @@
 :root {
-    --bg-dark: #0f172a;
-    --primary: #6366f1;
-    --accent: #a855f7;
-    --glass: rgba(255, 255, 255, 0.05);
+    --bg-main: #f1f5f9; /* Gris très clair bleuté */
+    --primary: #4f46e5; 
+    --accent: #8b5cf6;
+    --text-dark: #1e293b;
+    --glass: rgba(255, 255, 255, 0.7); /* Verre clair */
 }
 
 body {
     margin: 0;
-    background: var(--bg-dark);
-    color: white;
+    background: var(--bg-main);
+    color: var(--text-dark);
     font-family: 'Space Grotesk', sans-serif;
-    overflow-x: hidden;
 }
 
-#networkCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0.4;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem 5%;
-    align-items: center;
-}
-
-.logo-ydb {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(to right, var(--primary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* On peut aussi mettre ton dessin en SVG ici */
-}
-
-.glass {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-}
-
-.vibrant-hero {
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.photo-main {
-    width: 180px;
-    height: 180px;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Forme organique */
-    background: linear-gradient(var(--primary), var(--accent));
-    padding: 5px;
-    object-fit: cover;
+/* On réduit la taille des cartes et des textes */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Plus petites */
+    gap: 20px;
+    padding: 20px 5%;
 }
 
 .card {
-    transition: all 0.4s ease;
-    cursor: pointer;
-    overflow: hidden;
+    padding: 15px; /* Moins de vide */
+    border-radius: 15px;
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--primary);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+.card h3 {
+    font-size: 1.1rem; /* Titre plus discret */
+    margin: 10px 0 5px 0;
+}
+
+.card p {
+    font-size: 0.9rem; /* Texte plus petit */
+    color: #475569;
+}
+
+.card-image {
+    height: 120px; /* Moins haut */
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+/* Le canevas de fond est maintenant gris clair */
+#networkCanvas {
+    opacity: 0.2; /* Très subtil pour ne pas gêner la lecture */
 }
