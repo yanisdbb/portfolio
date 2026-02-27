@@ -8,9 +8,23 @@
 
 body {
     margin: 0;
-    background: var(--bg-main);
-    color: var(--text-dark);
+    background-color: #f8fafc; /* Couleur de base du site */
+    color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
+}
+
+/* On enlève les fonds opaques des grandes sections */
+.hero-light, #about, #projets {
+    background: transparent !important; 
+}
+
+/* On utilise du "Glassmorphism" pour les cartes 
+   pour qu'on voit un peu le réseau bouger derrière */
+.glass-card, .card.glass {
+    background: rgba(255, 255, 255, 0.6); /* 60% d'opacité */
+    backdrop-filter: blur(8px); /* Effet de flou pour le style */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
 }
 
 /* On réduit la taille des cartes et des textes */
@@ -46,7 +60,12 @@ body {
     border-radius: 10px;
 }
 
-/* Le canevas de fond est maintenant gris clair */
 #networkCanvas {
-    opacity: 0.2; /* Très subtil pour ne pas gêner la lecture */
+    position: fixed; /* Reste fixé même au scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Derrière le contenu */
+    pointer-events: none; /* Laisse passer les clics vers les boutons */
 }
