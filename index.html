@@ -3,51 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanis D. B. | Portfolio R&T</title>
+    <title>Yanis D. B. | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
         <div class="logo">YDB</div>
         <ul>
+            <li><a href="index.html">Accueil</a></li>
             <li><a href="#projets">Projets</a></li>
-            <li><a href="#alternance">Expérience</a></li>
-            <li><a href="#iot">IoT</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1>Yanis D. B.</h1>
-        <p>Étudiant en Réseaux & Télécommunications | Apprenti Ingénieur | Créatif</p>
-        <div class="logo-placeholder">
-            <img src="logo_ydb.png" alt="Logo YDB" style="max-width: 150px;">
+    <header class="hero">
+        <div class="hero-content">
+            <div class="profile-pic-container">
+                <img src="photo-yanis.jpg" alt="Yanis D. B." class="profile-pic">
+            </div>
+            <div class="hero-text">
+                <h1>Yanis D. B.</h1>
+                <p>Étudiant en Réseaux & Télécommunications | Apprenti Ingénieur</p>
+                <p class="about-me">
+                    Passionné par l'infrastructure réseau et les nouvelles technologies, je suis actuellement apprenti ingénieur au <strong>CHRU de Tours</strong>. 
+                    Mon parcours allie rigueur technique et créativité, que ce soit dans le déploiement de solutions télécoms critiques, l'organisation d'événements e-sport ou le graphisme. 
+                    Basé à Blois, je cultive également un esprit d'équipe et de sécurité forgé par mes expériences d'encadrant d'escalade.
+                </p>
+            </div>
         </div>
     </header>
 
-    <section id="projets">
-        <h2>Focus : RT-LAN 2026</h2>
-        <div class="project-card">
-            <div class="image-placeholder">[PHOTO DE L'INSTALLATION ICI]</div>
-            <p>Organisation d'une compétition Multi-gaming de 30h. Infrastructure réseau gérée sous <strong>Proxmox</strong> avec équipements <strong>Cisco</strong>. 400 vues uniques sur Twitch.</p>
-        </div>
-    </section>
+    <section id="projets" class="grid-container">
+        <h2>Mes Projets</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="rt-lan.html">
+                    <div class="image-placeholder">[IMAGE RT-LAN]</div>
+                </a>
+                <h3>RT-LAN 2026</h3>
+                <p>Organisation d'une LAN multi-gaming (Cisco/Proxmox).</p>
+                <a href="rt-lan.html" class="btn">Voir le projet</a>
+            </div>
 
-    <section id="alternance">
-        <h2>Alternance au CHRU de Tours</h2>
-        <p>Maintien en condition opérationnelle d'infrastructures critiques. Déploiement de solutions de téléphonie IP (DECT sur IP) et support de second niveau.</p>
-        <div class="image-placeholder">[PHOTO DISCRÈTE DE LA DSI ICI]</div>
-    </section>
+            <div class="project-card">
+                <a href="chru.html">
+                    <div class="image-placeholder">[IMAGE CHRU]</div>
+                </a>
+                <h3>Infrastructure Critique</h3>
+                <p>Apprentissage au sein de la DSI du CHRU de Tours.</p>
+                <a href="chru.html" class="btn">Détails techniques</a>
+            </div>
 
-    <section id="iot">
-        <h2>Espace IoT</h2>
-        <div class="wip-box">
-            <h3>🚧 Work In Progress 🚧</h3>
-            <p>Un projet d'envergure est actuellement en cours de développement. Restez connectés pour découvrir la suite !</p>
+            <div class="project-card">
+                <a href="iot.html">
+                    <div class="image-placeholder">[IMAGE IoT]</div>
+                </a>
+                <h3>Projet IoT</h3>
+                <p>Développement de solutions connectées (En cours).</p>
+                <a href="iot.html" class="btn">Suivre l'avancée</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Yanis D. B. - Conçu avec passion à Blois.</p>
+        <p>&copy; 2026 Yanis D. B. | Étudiant R&T Blois</p>
     </footer>
 </body>
 </html>
