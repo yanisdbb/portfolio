@@ -1,0 +1,50 @@
+:root {
+    --primary: #4f46e5; /* Bleu électrique */
+    --accent: #a855f7; /* Violet */
+    --text: #1f2937;
+    --bg: #f9fafb;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    padding: 100px 5%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+}
+
+.image-placeholder {
+    background: #e5e7eb;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 2px dashed #9ca3af;
+}
+
+.wip-box {
+    border: 3px solid var(--accent);
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    margin: 50px 0;
+}
+
+section { padding: 50px 10%; }
