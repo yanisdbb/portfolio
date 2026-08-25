@@ -2,29 +2,158 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Site Web Interne - Yanis D. B.</title>
+<style>
+        /* Style temporaire pour les emplacements d'images (à conserver ou modifier selon tes goûts) */
+        .image-placeholder {
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .image-placeholder span { font-size: 0.85rem; color: #475569; font-weight: 400; }
+        .project-img { width: 100%; border-radius: 12px; margin: 20px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
 </head>
-<body class="page-detail">
-    <div class="container-narrow">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        
-        <h1>Développement Web - CHRU de Tours</h1>
-        
-        <div class="image-full">[PHOTO DU PROJET ICI]</div>
+<body>
 
-        <div class="text-block">
+    <!-- Canvas de fond pour l'animation de ton réseau -->
+    <canvas id="networkCanvas"></canvas>
+
+    <main class="project-container">
+        
+        <!-- En-tête / Présentation -->
+        <header class="project-header">
+            <div class="project-tagline">Développement Web & Architecture SQL</div>
+            <h1 class="project-title">Outil Web de Diagnostic & API Multi-Serveurs</h1>
+            <p class="project-summary">
+                Conception de A à Z d'une architecture client-serveur permettant de centraliser et d'unifier en temps réel les données de deux technologies de contrôle d'accès hétérogènes (TIL et TDSI). Remplacement d'une solution Excel obsolète par une application web robuste hébergée sous Linux.
+            </p>
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span>Rôle</span>
+                    <strong>Full-Stack Developer</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Langages</span>
+                    <strong>Python, JS, SQL, HTML/CSS</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Frameworks</span>
+                    <strong>FastAPI, Vanilla JS</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Environnement</span>
+                    <strong>Serveur Linux, MS SQL</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contexte & Objectifs -->
+        <section class="project-section">
+            <h2>01. Contexte & Limites de l'existant</h2>
+            <p>
+                Le support technique nécessitait un accès rapide aux informations des lecteurs de badges et de leurs contrôleurs. Historiquement, j'avais développé un outil basé sur Excel et Power Query (18 feuilles, +14 000 cellules). Face à la volumétrie croissante, ce système a montré des limites critiques : instabilité, asynchronisme et risque d'erreur humaine.
+            </p>
             
-<p>En complément de mes missions d'infrastructures réseaux (comme le déploiement DECT sur IP), j'ai été amené à développer un outil web interne pour le service Informatique du CHRU de Tours.</p>
-<h3>Contexte & Réalisation :</h3>
-<ul>
-    <li><strong>Analyse du besoin :</strong> Comprendre la demande des équipes techniques et définir les fonctionnalités nécessaires pour l'outil.</li>
-    <li><strong>Développement :</strong> Création de l'interface et du backend du site, en respectant les contraintes de sécurité d'un environnement hospitalier.</li>
-    <li><strong>Déploiement :</strong> Mise en production sur les serveurs internes de la DSI pour un usage quotidien par les collaborateurs.</li>
-</ul>
-<p>Cette mission m'a permis de prouver ma polyvalence : être capable de maintenir le matériel réseau tout en concevant des outils logiciels pour faciliter le travail de l'équipe.</p>
+            <!-- EMPLACEMENT IMAGE 1 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture d'écran de l'ancien fichier Excel / Power Query montrant la complexité et le volume de données (l'usine à gaz).</span>
+            </div>
 
-        </div>
-    </div>
+            <p>
+                Il a donc fallu pivoter vers une solution pérenne : interroger directement les bases de données propriétaires de l'hôpital en temps réel via une interface web unifiée.
+            </p>
+        </section>
+
+        <!-- Stack Technique -->
+        <section class="project-section">
+            <h2>02. Conception & Architecture Logicielle</h2>
+            <p>
+                La difficulté majeure résidait dans l'absence de schémas relationnels et les différences de logique entre les bases MSESAME (TIL) et Exgarde (TDSI). J'ai procédé à une rétro-ingénierie des bases SQL pour normaliser les données.
+            </p>
+            
+            <!-- EMPLACEMENT IMAGE 2 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture de DBeaver montrant tes requêtes SQL ou un schéma explicatif des tables (ex: dbo.READER, T_LECTEUR).</span>
+            </div>
+
+            <ul class="project-list">
+                <li><strong>Backend (Python / FastAPI) :</strong> Développement d'une API REST s'exécutant sur un serveur Linux, utilisant <code>pyodbc</code> pour dialoguer avec les bases Microsoft SQL Server.</li>
+                <li><strong>Frontend (HTML / JS Vanilla) :</strong> Choix délibéré d'éviter les gros frameworks (React/Angular) pour limiter la dette technique et faciliter la reprise du code après mon alternance.</li>
+                <li><strong>Communication asynchrone :</strong> Utilisation de requêtes <code>fetch()</code> en Javascript pour une actualisation des données sans rechargement de page.</li>
+            </ul>
+
+            <div class="tag-cloud">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">pyodbc</span>
+                <span class="tech-tag">SQL Server</span>
+                <span class="tech-tag">DBeaver</span>
+                <span class="tech-tag">Uvicorn</span>
+            </div>
+        </section>
+
+        <!-- Défis Techniques -->
+        <section class="project-section">
+            <h2>03. Défis Techniques & Résolution</h2>
+            <p>
+                Le développement de cet outil "sur-mesure" a nécessité la résolution de plusieurs problématiques complexes, tant sur l'aspect algorithmique que système :
+            </p>
+            <ul class="project-list">
+                <li>
+                    <strong>Logique de "Reverse Lookup" :</strong> Pour l'onglet des profils d'accès, il a fallu concevoir des requêtes SQL imbriquées complexes (TDSI) permettant de partir d'un groupe d'accès pour lister dynamiquement toutes les portes et lecteurs autorisés.
+                </li>
+                <li>
+                    <strong>Débogage système (Erreur 503) :</strong> Isolation et résolution d'un crash de l'API en production en traquant les processus fantômes (<code>pkill</code>) et en analysant les journaux de logs d'Uvicorn exécutés en tâche de fond (<code>nohup</code>).
+                </li>
+                <li>
+                    <strong>Sérialisation JSON (Performance) :</strong> Afin d'éviter de multiplier les requêtes réseau, les données complètes de chaque équipement sont sérialisées dans les attributs <code>data-complet</code> du DOM HTML, puis désérialisées (<code>JSON.parse</code>) lors du double-clic pour affichage instantané.
+                </li>
+            </ul>
+
+            <!-- EMPLACEMENT IMAGE 3 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture d'écran de ton code VS Code (ex: la fonction openModal en JS ou une belle requête SQL en Python) OU capture du terminal Linux.</span>
+            </div>
+        </section>
+
+        <!-- Résultat Final -->
+        <section class="project-section">
+            <h2>04. Résultat Final & Impact</h2>
+            <p>
+                L'outil est aujourd'hui déployé sur le réseau de l'hôpital. Il s'est révélé particulièrement critique lors d'une récente campagne de production de badges, permettant d'identifier en quelques secondes les incohérences de droits d'accès.
+            </p>
+
+            <!-- EMPLACEMENT IMAGE 4 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture de l'interface finale du site web (le tableau avec les badges colorés TIL/TDSI) AVEC la modale de détails ouverte sur la droite !</span>
+            </div>
+
+            <div class="callout-box">
+                <strong>Bilan :</strong> Un gain de temps drastique pour le support technique (données accessibles en moins de 3 secondes), une architecture robuste isolée sur serveur, et un projet "livré en main propre" avec sa documentation complète (README).
+            </div>
+        </section>
+
+    </main>
+
 </body>
 </html>
