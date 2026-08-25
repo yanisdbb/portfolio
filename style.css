@@ -1,33 +1,67 @@
 :root {
-    --bg-main: #f1f5f9; /* Gris très clair bleuté */
-    --primary: #4f46e5; 
-    --accent: #8b5cf6;
-    --text-dark: #1e293b;
-    --glass: rgba(255, 255, 255, 0.7); /* Verre clair */
-}
-/* On ajoute une variable pour la couleur de la surbrillance (le "glow") */
-:root {
     --bg: #f8fafc;
-    --card-bg: rgba(255, 255, 255, 0.65); /* Assez transparent pour voir le fond animé */
+    --card-bg: rgba(255, 255, 255, 0.65);
     --primary: #4f46e5;
     --accent: #a855f7;
     --text: #1e293b;
-    --glow: rgba(168, 85, 247, 0.4); /* Violet léger pour la lumière */
+    --glow: rgba(168, 85, 247, 0.4);
 }
 
-/* --- LA BULLE PROFIL --- */
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#networkCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    align-items: center;
+}
+
+.logo-ydb {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+/* --- BULLE PROFIL --- */
 .profile-bubble {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 25px; /* Très arrondi */
+    border-radius: 25px;
     padding: 30px;
     max-width: 850px;
-    margin: 60px auto 40px auto; /* Centre la bulle */
-    /* L'effet de surbrillance doux autour de la bulle : */
-    box-shadow: 0 0 25px rgba(79, 70, 229, 0.15), 
-                inset 0 0 15px rgba(255, 255, 255, 0.7); 
+    margin: 60px auto 40px auto;
+    box-shadow: 0 0 25px rgba(79, 70, 229, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 .profile-content {
@@ -47,12 +81,12 @@
 
 @media (max-width: 768px) {
     .profile-content {
-        flex-direction: column; /* Sur mobile, la photo passe au-dessus du texte */
+        flex-direction: column;
         text-align: center;
     }
 }
 
-/* --- LES BULLES PROJETS (Cartes) --- */
+/* --- BULLES PROJETS --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -61,28 +95,50 @@
     margin-bottom: 50px;
 }
 
-.card {
+.card.glass {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px; /* Coins arrondis comme la maquette */
+    border-radius: 20px;
     padding: 20px;
     cursor: pointer;
     transition: all 0.4s ease;
-    /* Ombre de base très discrète */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* C'est ici que la magie opère quand tu passes la souris ! */
-.card:hover { 
-    transform: translateY(-8px); 
-    border-color: rgba(168, 85, 247, 0.5); /* La bordure se teinte */
-    /* La grosse surbrillance façon néon : */
-    box-shadow: 0 15px 35px var(--glow), 
-                0 0 15px rgba(79, 70, 229, 0.3); 
+.card.glass:hover {
+    transform: translateY(-8px);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 15px 35px var(--glow), 0 0 15px rgba(79, 70, 229, 0.3);
 }
 
-/* Le bouton dans les cartes */
+/* --- GESTION DES IMAGES DANS LES CARTES --- */
+.card-image {
+    height: 140px;
+    width: 100%;
+    background: #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Coupe ce qui dépasse */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit le cadre sans déformer */
+    display: block;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px 0;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #475569;
+}
+
 .btn-small {
     background: transparent;
     color: var(--text);
@@ -96,245 +152,8 @@
     margin-top: 15px;
 }
 
-.card:hover .btn-small {
+.card.glass:hover .btn-small {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     border: none;
-}
-
-body {
-    margin: 0;
-    background-color: #f8fafc; /* Couleur de base du site */
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-/* On enlève les fonds opaques des grandes sections */
-.hero-light, #about, #projets {
-    background: transparent !important; 
-}
-
-/* On utilise du "Glassmorphism" pour les cartes 
-   pour qu'on voit un peu le réseau bouger derrière */
-.glass-card, .card.glass {
-    background: rgba(255, 255, 255, 0.6); /* 60% d'opacité */
-    backdrop-filter: blur(8px); /* Effet de flou pour le style */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-}
-
-/* On réduit la taille des cartes et des textes */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Plus petites */
-    gap: 20px;
-    padding: 20px 5%;
-}
-
-.card {
-    padding: 15px; /* Moins de vide */
-    border-radius: 15px;
-    background: var(--glass);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: 0.3s;
-}
-
-.card h3 {
-    font-size: 1.1rem; /* Titre plus discret */
-    margin: 10px 0 5px 0;
-}
-
-.card p {
-    font-size: 0.9rem; /* Texte plus petit */
-    color: #475569;
-}
-
-.card-image {
-    height: 140px; /* Tu peux augmenter ou réduire cette valeur selon tes goûts */
-    width: 100%;
-    background: #e2e8f0; /* Couleur de fond si l'image ne charge pas */
-    border-radius: 12px;
-    margin-bottom: 15px;
-    overflow: hidden; /* C'est ça qui empêche l'image de déborder ! */
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Permet de remplir le cadre sans écraser ou étirer l'image */
-    display: block;
-}
-
-#networkCanvas {
-    position: fixed; /* Reste fixé même au scroll */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Derrière le contenu */
-    pointer-events: none; /* Laisse passer les clics vers les boutons */
-}
-/* --- PAGE DÉTAIL PROJET (ASSISTANT VOCAL) --- */
-.project-container {
-    max-width: 900px;
-    margin: 40px auto 60px auto;
-    padding: 0 20px;
-}
-
-.project-header {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 25px;
-    padding: 30px;
-    margin-bottom: 25px;
-    box-shadow: 0 0 25px rgba(79, 70, 229, 0.12),
-                inset 0 0 15px rgba(255, 255, 255, 0.7);
-}
-
-.project-tagline {
-    color: var(--primary);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-}
-
-.project-title {
-    font-size: 1.8rem;
-    color: var(--text-dark);
-    margin: 0 0 12px 0;
-    line-height: 1.3;
-}
-
-.project-summary {
-    font-size: 1rem;
-    color: #475569;
-    line-height: 1.6;
-}
-
-.project-meta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.meta-item {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
-    padding: 12px 15px;
-}
-
-.meta-item span {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #64748b;
-    font-weight: 600;
-}
-
-.meta-item strong {
-    font-size: 0.95rem;
-    color: var(--text-dark);
-}
-
-.project-section {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 25px 30px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-}
-
-.project-section h2 {
-    font-size: 1.25rem;
-    color: var(--primary);
-    margin: 0 0 15px 0;
-}
-
-.project-section p {
-    font-size: 0.95rem;
-    color: #334155;
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-.project-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.project-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.5;
-}
-
-.project-list li::before {
-    content: "•";
-    color: var(--accent);
-    position: absolute;
-    left: 4px;
-    font-size: 1.3rem;
-    top: -2px;
-}
-
-.project-list li strong {
-    color: var(--text-dark);
-}
-
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.tech-tag {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 5px 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.callout-box {
-    background: rgba(139, 92, 246, 0.08);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 12px 12px 0;
-    padding: 12px 16px;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-}
-/* --- GESTION DES IMAGES POUR TOUT LE SITE --- */
-
-/* 1. Empêcher n'importe quelle image de déborder de l'écran */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* 2. Style spécifique pour les grandes photos dans les pages projets (rt-lan.html etc.) */
-.image-full img, .image-placeholder img {
-    width: 100%;
-    max-height: 450px; /* Limite la hauteur pour ne pas prendre tout l'écran */
-    object-fit: cover; /* Recadre proprement sans écraser l'image */
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    margin-top: 15px;
 }
