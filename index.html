@@ -1,61 +1,101 @@
-<div class="grid">
-    <!-- Carte RT-LAN -->
-    <div class="card glass" onclick="window.location.href='rt-lan.html'">
-        <div class="card-image">
-            <img src="rtlan.jpg" alt="RT-LAN">
-        </div>
-        <div class="card-content">
-            <h3>RT-LAN 2026</h3>
-            <p>Compétition multi-gaming de 30h gérée en autonomie.</p>
-            <button class="btn-small">Voir le projet</button>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDB | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="networkCanvas"></canvas>
 
-    <!-- Carte CHRU -->
-    <div class="card glass" onclick="window.location.href='chru-web.html'">
-        <div class="card-image">
-            <img src="chru.jpg" alt="CHRU">
+    <nav>
+        <div class="logo-ydb">YDB</div>
+        <div class="nav-links">
+            <a href="#projets">Projets</a>
+            <a href="#about">Profil</a>
         </div>
-        <div class="card-content">
-            <h3>CHRU de Tours</h3>
-            <p>Infrastructures multimédias et télécoms hospitalières.</p>
-            <button class="btn-small">Détails techniques</button>
-        </div>
-    </div>
+    </nav>
 
-    <!-- Carte IoT -->
-    <div class="card glass" onclick="window.location.href='iot.html'">
-        <div class="card-image">
-            <img src="maison.jpg" alt="IOT">
+    <!-- La grosse bulle Profil -->
+    <section id="about" class="profile-bubble">
+        <div class="profile-content">
+            <div class="profile-photo-container">
+                <img src="moi.jpg" alt="Yanis D.B." class="profile-pic-large">
+            </div>
+            <div class="profile-text">
+                <h2>Profil</h2>
+                <p>
+                    Étudiant en <strong>Réseaux et Télécommunications</strong> à Blois et apprenti ingénieur au <strong>CHRU de Tours</strong>. 
+                    Je me spécialise dans les infrastructures critiques et l'organisation d'événements technologiques, alliant rigueur technique et esprit d'initiative.
+                </p>
+            </div>
         </div>
-        <div class="card-content">
-            <h3>Projet IoT Finalisé</h3>
-            <p>Conception et programmation d'une solution connectée de bout en bout.</p>
-            <button class="btn-small">Voir le projet</button>
-        </div>
-    </div>
+    </section>
 
-    <!-- Carte Home Assistant (sans image pour l'instant) -->
-    <div class="card glass" onclick="window.location.href='home-assistant.html'">
-        <div class="card-image">
-            <!-- Tu ajouteras ton tag img ici quand tu auras la photo -->
-        </div>
-        <div class="card-content">
-            <h3>Domotique Home Assistant</h3>
-            <p>Déploiement, paramétrage et sécurisation d'un serveur domotique personnel.</p>
-            <button class="btn-small">Voir le projet</button>
-        </div>
-    </div>
+    <!-- La section Projets -->
+    <section id="projets">
+        <div class="grid">
+            
+            <div class="card glass" onclick="window.location.href='rt-lan.html'">
+                <div class="card-image">
+                    <img src="rtlan.jpg" alt="RT-LAN">
+                </div>
+                <div class="card-content">
+                    <h3>RT-LAN 2026</h3>
+                    <p>Compétition multi-gaming de 30h gérée en autonomie.</p>
+                    <button class="btn-small">Voir le projet</button>
+                </div>
+            </div>
 
-    <!-- Carte Compteur -->
-    <div class="card glass" onclick="window.location.href='compteur-points.html'">
-        <div class="card-image">
-            <img src="dashboard.png" alt="Dashboard">
+            <div class="card glass" onclick="window.location.href='chru-web.html'">
+                <div class="card-image">
+                    <img src="chru.jpg" alt="CHRU">
+                </div>
+                <div class="card-content">
+                    <h3>CHRU de Tours</h3>
+                    <p>Infrastructures multimédias et télécoms hospitalières.</p>
+                    <button class="btn-small">Détails techniques</button>
+                </div>
+            </div>
+
+            <div class="card glass" onclick="window.location.href='iot.html'">
+                <div class="card-image">
+                    <img src="maison.jpg" alt="IOT">
+                </div>
+                <div class="card-content">
+                    <h3>Projet IoT Finalisé</h3>
+                    <p>Conception et programmation d'une solution connectée de bout en bout.</p>
+                    <button class="btn-small">Voir le projet</button>
+                </div>
+            </div>
+
+            <div class="card glass" onclick="window.location.href='home-assistant.html'">
+                <div class="card-image">
+                    <!-- Image à ajouter plus tard -->
+                </div>
+                <div class="card-content">
+                    <h3>Domotique Home Assistant</h3>
+                    <p>Déploiement, paramétrage et sécurisation d'un serveur domotique personnel.</p>
+                    <button class="btn-small">Voir le projet</button>
+                </div>
+            </div>
+
+            <div class="card glass" onclick="window.location.href='compteur-points.html'">
+                <div class="card-image">
+                    <img src="dashboard.png" alt="Dashboard">
+                </div>
+                <div class="card-content">
+                    <h3>Web & Bot Discord</h3>
+                    <p>Interface de score synchronisée avec un Bot Discord via API.</p>
+                    <button class="btn-small">Voir le projet</button>
+                </div>
+            </div>
+
         </div>
-        <div class="card-content">
-            <h3>Web & Bot Discord</h3>
-            <p>Interface de score synchronisée avec un Bot Discord via API.</p>
-            <button class="btn-small">Voir le projet</button>
-        </div>
-    </div>
-</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
