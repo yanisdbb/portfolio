@@ -321,3 +321,20 @@ body {
     font-size: 0.9rem;
     color: var(--text-dark);
 }
+/* --- GESTION DES IMAGES POUR TOUT LE SITE --- */
+
+/* 1. Empêcher n'importe quelle image de déborder de l'écran */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Style spécifique pour les grandes photos dans les pages projets (rt-lan.html etc.) */
+.image-full img, .image-placeholder img {
+    width: 100%;
+    max-height: 450px; /* Limite la hauteur pour ne pas prendre tout l'écran */
+    object-fit: cover; /* Recadre proprement sans écraser l'image */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-top: 15px;
+}
