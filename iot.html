@@ -2,29 +2,144 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Projet IoT - Yanis D. B.</title>
+    <title>Système de Sécurité IoT - Yanis D. B.</title>
 </head>
-<body class="page-detail">
-    <div class="container-narrow">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        
-        <h1>Système Connecté & IoT</h1>
-        
-        <div class="image-full">[PHOTO DU PROJET ICI]</div>
+<body>
 
-        <div class="text-block">
+    <canvas id="networkCanvas"></canvas>
+
+    <main class="project-container">
+        
+        <a href="index.html" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px;">← Retour à l'accueil</a>
+
+        <!-- En-tête / Présentation -->
+        <header class="project-header">
+            <div class="project-tagline">Systèmes Embarqués & Architecture Réseau Hybride</div>
+            <h1 class="project-title">Centrale d'Alarme IoT Multi-Zones</h1>
+            <p class="project-summary">
+                Conception et prototypage d'un système de sécurité domestique complet. Ce projet intègre des capteurs décentralisés, un réseau hybride (Bluetooth, Série, Wi-Fi), un serveur local sous Raspberry Pi, une interface Web de contrôle et un système d'alerte en temps réel via Discord.
+            </p>
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span>Rôle</span>
+                    <strong>Ingénieur IoT & Réseaux (Projet BUT)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Hardware</span>
+                    <strong>Raspberry Pi 3 & ESP32 (DevKit V1)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Protocoles</span>
+                    <strong>BLE, UART, SPI, HTTP</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Software</span>
+                    <strong>Python (Flask), C++ (Arduino)</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contexte & Objectifs -->
+        <section class="project-section">
+            <h2>01. Contexte & Intégration Matérielle</h2>
+            <p>
+                Réalisé dans le cadre de la SAÉ 6.IOM.01 du BUT Réseaux et Télécommunications, l'objectif était de concevoir un objet connecté "commercialisable". Au-delà du code, le défi résidait dans l'intégration physique et la gestion de projet (budget, diagramme de Gantt).
+            </p>
+            <ul class="project-list">
+                <li><strong>Détection Multi-niveaux :</strong> Surveillance périmétrique (Capteur magnétique Reed), volumétrique (PIR) et de passage (Barrière Infrarouge).</li>
+                <li><strong>Contrôle d'accès :</strong> Lecteur de badge RFID (MFRC522) placé à l'entrée.</li>
+                <li><strong>Intégration "Invisible" :</strong> Dissimulation de toute l'électronique et des câbles dans des meubles miniatures modélisés et imprimés en 3D pour un rendu esthétique parfait.</li>
+            </ul>
             
-<p>Mon projet IoT (Internet des Objets) est désormais abouti. L'objectif était de concevoir une architecture complète, du capteur physique jusqu'à la restitution des données.</p>
-<h3>Architecture & Composants</h3>
-<ul>
-    <li><strong>Hardware :</strong> Conception et câblage de la carte électronique (microcontrôleur type ESP32/Arduino).</li>
-    <li><strong>Réseau :</strong> Mise en place de la communication sans fil pour remonter les informations en toute sécurité.</li>
-    <li><strong>Logiciel :</strong> Programmation du système embarqué et traitement des données reçues.</li>
-</ul>
-<p>Ce projet m'a permis d'allier l'électronique de base aux protocoles réseaux modernes, une compétence clé dans le domaine des télécommunications d'aujourd'hui.</p>
+            <div class="image-placeholder" style="background: rgba(255,255,255,0.4); padding: 15px; border-radius: 12px; text-align: center; margin-top: 15px; border: 1px dashed var(--primary);">
+                <em>📸 [INSERER ICI : La photo de la maison en impression 3D avec les capteurs]</em>
+                <span style="display: block; font-size: 0.8rem; color: #64748b; margin-top: 5px;">Maquette physique du domicile avec intégration des capteurs dans le mobilier 3D.</span>
+            </div>
+        </section>
 
-        </div>
-    </div>
+        <!-- Architecture Réseau -->
+        <section class="project-section">
+            <h2>02. Architecture Réseau Décentralisée</h2>
+            <p>
+                Plutôt que d'utiliser un seul microcontrôleur surchargé, le système s'appuie sur une architecture hybride à trois niveaux pour garantir sécurité et faible latence :
+            </p>
+
+            <ul class="project-list">
+                <li><strong>Le Front-End Physique (Bluetooth) :</strong> Le lecteur RFID (ESP2) communique exclusivement en <em>Bluetooth Low Energy (BLE)</em> avec la centrale. Cela permet de déporter le contrôle d'accès sans tirer de câbles.</li>
+                <li><strong>Le Concentrateur (Liaison Série) :</strong> L'ESP1 centralise l'état des capteurs (GPIO) et transmet les données au Raspberry Pi via une liaison série filaire (USB - UART à 115200 bauds), garantissant zéro perte de paquets due aux interférences sans fil.</li>
+                <li><strong>Le Back-End Serveur (Wi-Fi) :</strong> Le Raspberry Pi 3 agit comme chef d'orchestre. Il gère la base de données SQLite, héberge l'interface Web et pousse les alertes vers le Cloud (API Discord) via le réseau Wi-Fi local.</li>
+            </ul>
+
+            <div class="tag-cloud">
+                <span class="tech-tag">C++ (Arduino IDE)</span>
+                <span class="tech-tag">Bluetooth Low Energy</span>
+                <span class="tech-tag">PySerial</span>
+                <span class="tech-tag">Topologie Hybride</span>
+            </div>
+
+            <div class="image-placeholder" style="background: rgba(255,255,255,0.4); padding: 15px; border-radius: 12px; text-align: center; margin-top: 20px; border: 1px dashed var(--primary);">
+                <em>📸 [INSERER ICI : Ton beau schéma synoptique du réseau]</em>
+                <span style="display: block; font-size: 0.8rem; color: #64748b; margin-top: 5px;">Schéma synoptique de l'architecture réseau globale.</span>
+            </div>
+        </section>
+
+        <!-- Logiciel & Interface -->
+        <section class="project-section">
+            <h2>03. Interface Web & Système d'Alertes</h2>
+            <p>
+                L'expérience utilisateur a été pensée pour être moderne, réactive et accessible depuis n'importe quel smartphone connecté au réseau local.
+            </p>
+            
+            <ul class="project-list">
+                <li><strong>Serveur Web Flask :</strong> Création d'un dashboard interactif en HTML/CSS/JS communiquant avec le back-end Python via des requêtes AJAX dynamiques (chemins relatifs).</li>
+                <li><strong>Gestion des états :</strong> Possibilité d'armer, désarmer ou activer un "Mode Silencieux" (alertes sans sirène physique).</li>
+                <li><strong>Webhooks Discord :</strong> Implémentation d'un script Python capable de parser les trames séries en temps réel et de déclencher une requête HTTP POST vers l'API Discord en cas d'intrusion détectée.</li>
+            </ul>
+
+            <div class="image-placeholder" style="background: rgba(255,255,255,0.4); padding: 15px; border-radius: 12px; text-align: center; margin-top: 15px; border: 1px dashed var(--primary);">
+                <em>📸 [INSERER ICI : Une composition montrant l'interface Web à côté de l'alerte Discord sur smartphone]</em>
+                <span style="display: block; font-size: 0.8rem; color: #64748b; margin-top: 5px;">Interface de contrôle locale et remontée d'alerte push sur smartphone.</span>
+            </div>
+        </section>
+
+        <!-- Résolution de problèmes (Le truc qui plaît aux recruteurs) -->
+        <section class="project-section">
+            <h2>04. Défis Techniques & Débogage</h2>
+            <p>
+                La véritable valeur ajoutée de ce projet réside dans la résolution de conflits complexes entre le matériel (hardware) et le logiciel (software) en conditions réelles :
+            </p>
+
+            <ul class="project-list">
+                <li><strong>Le "Boot Loop" des ESP32 :</strong> L'ESP crachait au démarrage (erreur <code>rtc_reset</code>). Après investigation, le problème venait de l'utilisation des <em>Strapping Pins</em> (broches dictant le mode de boot). Solution : Réallocation logicielle et matérielle vers des GPIO neutres (ex: D21 pour le bus SPI du RFID).</li>
+                <li><strong>Le Reset Série intempestif :</strong> Chaque fois que le script Python initiait la communication USB, l'ESP32 redémarrait. Problème contourné en désactivant le signal DTR directement dans le script backend (<code>ser.setDTR(False)</code>).</li>
+                <li><strong>Logique matérielle inversée (Active Low) :</strong> Face à une erreur de câblage difficilement accessible sous la maquette, création d'un patch logiciel dans le code C++ inversant l'état logique de la LED stroboscopique au lieu de démonter l'infrastructure.</li>
+            </ul>
+            
+            <div class="image-placeholder" style="background: rgba(255,255,255,0.4); padding: 15px; border-radius: 12px; text-align: center; margin-top: 15px; border: 1px dashed var(--primary);">
+                <em>📸 [INSERER ICI : La photo des câbles Dupont emmêlés sous la planche en bois]</em>
+                <span style="display: block; font-size: 0.8rem; color: #64748b; margin-top: 5px;">La réalité du terrain : gestion du câblage et du hardware dissimulés sous la maquette.</span>
+            </div>
+        </section>
+
+        <!-- Bilan -->
+        <section class="project-section">
+            <h2>05. Bilan & Améliorations Futures</h2>
+            <p>
+                Au-delà de la note, ce projet m'a confronté à la réalité du terrain : la théorie informatique fonctionne rarement du premier coup face aux aléas physiques (chutes de tension, faux contacts vibratoires, instabilité des broches).
+            </p>
+
+            <div class="callout-box">
+                <strong>Prochaines itérations :</strong> Pour passer de l'état de prototype à un produit industriel, les prochaines étapes incluraient la conception de PCB sur-mesure (connecteurs JST), l'intégration d'une batterie de secours (Li-Po) contre les coupures de courant, et des règles <code>udev</code> Linux pour verrouiller dynamiquement l'attribution des ports USB.
+            </div>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
