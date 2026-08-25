@@ -2,29 +2,111 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Ton fichier CSS -->
     <link rel="stylesheet" href="style.css">
     <title>Home Assistant - Yanis D. B.</title>
 </head>
-<body class="page-detail">
-    <div class="container-narrow">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        
-        <h1>Domotique & Serveur Home Assistant</h1>
-        
-        <div class="image-full">[PHOTO DU PROJET ICI]</div>
+<body>
 
-        <div class="text-block">
-            
-<p>Passionné par l'automatisation, j'ai déployé chez moi un serveur <strong>Home Assistant</strong> pour centraliser et contrôler tous mes équipements connectés.</p>
-<h3>Ce que j'ai mis en place :</h3>
-<ul>
-    <li><strong>Déploiement serveur :</strong> Installation de l'OS Home Assistant sur une machine dédiée (Raspberry Pi ou Mini PC) pour un fonctionnement 24/7.</li>
-    <li><strong>Réseau & Sécurité :</strong> Configuration des flux réseau locaux, attribution des baux statiques et sécurisation de l'accès à distance.</li>
-    <li><strong>Intégration & Scénarios :</strong> Création de tableaux de bord personnalisés et programmation d'automatisations (éclairage, gestion de l'énergie, alertes).</li>
-</ul>
-<p>Ce projet personnel est un excellent terrain de jeu pour tester la sécurité réseau, la gestion de serveurs locaux et le scripting au quotidien.</p>
+    <!-- Canvas de fond pour l'animation de ton réseau -->
+    <canvas id="networkCanvas"></canvas>
 
-        </div>
-    </div>
+    <main class="project-container">
+        
+        <!-- En-tête / Présentation -->
+        <header class="project-header">
+            <div class="project-tagline">Projet Infrastructure & IoT</div>
+            <h1 class="project-title">Assistant Vocal Domotique 100% Local</h1>
+            <p class="project-summary">
+                Mise en place d'une infrastructure vocale souveraine sur serveur physique dédié. Intégration complète de Home Assistant, de microservices conteneurisés sous Docker et gestion du traitement audio de bas niveau via le protocole Wyoming.
+            </p>
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span>Rôle</span>
+                    <strong>SysAdmin / IoT Dev</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Matériel</span>
+                    <strong>ThinkCentre & JBL Stream</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Confidentialité</span>
+                    <strong>Zero-Cloud / 100% Local</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Environnement</span>
+                    <strong>Ubuntu Server & Docker</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contexte & Objectifs -->
+        <section class="project-section">
+            <h2>01. Contexte & Objectifs</h2>
+            <p>
+                L'enjeu consistait à concevoir une alternative autonome et respectueuse de la vie privée face aux solutions propriétaires du marché (Alexa, Google Assistant). Le système fonctionne entièrement hors ligne sur une machine locale revalorisée.
+            </p>
+            <ul class="project-list">
+                <li><strong>Détection locale du mot-clé :</strong> Réveil instantané du système via modèles légers exécutés sur le serveur.</li>
+                <li><strong>Pipeline vocal complet :</strong> Traitement de la parole (STT) et synthèse audio (TTS) sans passerelle externe.</li>
+                <li><strong>Modularité :</strong> Séparation claire des services d'inférence en conteneurs autonomes orchestrés via Docker Compose.</li>
+            </ul>
+        </section>
+
+        <!-- Stack Technique -->
+        <section class="project-section">
+            <h2>02. Architecture & Composants</h2>
+            <p>
+                L'architecture s'articule autour d'un client satellite Python dialoguant en TCP avec des conteneurs spécialisés via le protocole Wyoming :
+            </p>
+            <ul class="project-list">
+                <li><strong>Home Assistant (Docker) :</strong> Gestion des automatisations domotiques et orchestration du pipeline vocal Assist.</li>
+                <li><strong>Faster-Whisper (Docker) :</strong> Transcription vocale locale optimisée (STT).</li>
+                <li><strong>Piper (Docker) :</strong> Moteur neuronal de synthèse vocale (TTS) en français à faible empreinte.</li>
+                <li><strong>openWakeWord (Docker) :</strong> Moteur de détection continue d'empreintes vocales via modèles TensorFlow Lite (<code>.tflite</code>).</li>
+                <li><strong>Wyoming Satellite (Python) :</strong> Service hôte assurant la capture et le routage des flux audio ALSA.</li>
+            </ul>
+
+            <div class="tag-cloud">
+                <span class="tech-tag">Ubuntu Server</span>
+                <span class="tech-tag">Docker Compose</span>
+                <span class="tech-tag">Home Assistant</span>
+                <span class="tech-tag">Python (Venv)</span>
+                <span class="tech-tag">ALSA Audio</span>
+                <span class="tech-tag">Wyoming Protocol</span>
+                <span class="tech-tag">openWakeWord</span>
+            </div>
+        </section>
+
+        <!-- Défis Techniques -->
+        <section class="project-section">
+            <h2>03. Défis Techniques & Résolution</h2>
+            <p>
+                Le déploiement sur environnement réel a nécessité la résolution de plusieurs contraintes de bas niveau :
+            </p>
+            <ul class="project-list">
+                <li>
+                    <strong>Adaptation matérielle des flux audio (ALSA) :</strong> Correction de l'incompatibilité de fréquence du microphone USB (32 kHz natif) en utilisant les couches <code>plughw</code> pour fournir le flux 16 kHz Mono attendu par les modèles d'IA.
+                </li>
+                <li>
+                    <strong>Routage réseau Conteneur / Hôte :</strong> Résolution des problématiques de découverte mDNS/Zeroconf et configuration d'un pontage réseau direct sur interfaces locales.
+                </li>
+                <li>
+                    <strong>Intégration de Wake Words personnalisés :</strong> Injection et prise en charge de modèles d'inférence audio sur mesure dans le conteneur openWakeWord.
+                </li>
+            </ul>
+
+            <div class="callout-box">
+                <strong>Résultat :</strong> Un assistant vocal réactif, autonome et entièrement intégré à la domotique de l'habitat, garantissant une absence totale de fuite de données vers l'extérieur.
+            </div>
+        </section>
+
+    </main>
+
 </body>
 </html>
