@@ -5,6 +5,102 @@
     --text-dark: #1e293b;
     --glass: rgba(255, 255, 255, 0.7); /* Verre clair */
 }
+/* On ajoute une variable pour la couleur de la surbrillance (le "glow") */
+:root {
+    --bg: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.65); /* Assez transparent pour voir le fond animé */
+    --primary: #4f46e5;
+    --accent: #a855f7;
+    --text: #1e293b;
+    --glow: rgba(168, 85, 247, 0.4); /* Violet léger pour la lumière */
+}
+
+/* --- LA BULLE PROFIL --- */
+.profile-bubble {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 25px; /* Très arrondi */
+    padding: 30px;
+    max-width: 850px;
+    margin: 60px auto 40px auto; /* Centre la bulle */
+    /* L'effet de surbrillance doux autour de la bulle : */
+    box-shadow: 0 0 25px rgba(79, 70, 229, 0.15), 
+                inset 0 0 15px rgba(255, 255, 255, 0.7); 
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-pic-large {
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column; /* Sur mobile, la photo passe au-dessus du texte */
+        text-align: center;
+    }
+}
+
+/* --- LES BULLES PROJETS (Cartes) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 0 10%;
+    margin-bottom: 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px; /* Coins arrondis comme la maquette */
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    /* Ombre de base très discrète */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* C'est ici que la magie opère quand tu passes la souris ! */
+.card:hover { 
+    transform: translateY(-8px); 
+    border-color: rgba(168, 85, 247, 0.5); /* La bordure se teinte */
+    /* La grosse surbrillance façon néon : */
+    box-shadow: 0 15px 35px var(--glow), 
+                0 0 15px rgba(79, 70, 229, 0.3); 
+}
+
+/* Le bouton dans les cartes */
+.btn-small {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.card:hover .btn-small {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+}
 
 body {
     margin: 0;
