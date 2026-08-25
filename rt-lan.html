@@ -2,37 +2,125 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>RT-LAN 2026 - Détails</title>
+    <title>RT-LAN 2026 - Yanis D. B.</title>
 </head>
-<body class="page-detail">
-    <div class="container-narrow">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        
-        <h1>RT-LAN 2026 : Un défi technique et humain</h1>
-        
-        <div class="image-full">[PHOTO DE L'ÉVÉNEMENT]</div>
+<body>
 
-        <div class="text-block">
-            <p>En ce début d'année 2026, j'ai eu la chance d'organiser, avec mes camarades de promotion, la <strong>RT-LAN</strong> : une compétition multi-gaming de plus de 30 heures réunissant plus de 30 participants.</p>
+    <!-- Canvas de fond pour l'animation de ton réseau -->
+    <canvas id="networkCanvas"></canvas>
+
+    <main class="project-container">
+        
+        <!-- Bouton retour (Optionnel mais pratique) -->
+        <a href="index.html" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px;">← Retour à l'accueil</a>
+
+        <!-- En-tête / Présentation -->
+        <header class="project-header">
+            <div class="project-tagline">Événementiel E-Sport & Infrastructure Réseau</div>
+            <h1 class="project-title">RT-LAN 2026 : Compétition Multi-Gaming</h1>
+            <p class="project-summary">
+                Organisation de A à Z d'une LAN party de plus de 30 heures réunissant 30 joueurs. De la conception de l'infrastructure réseau à la diffusion en direct, un défi technique et humain relevé en seulement un mois.
+            </p>
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span>Rôle</span>
+                    <strong>Co-organisateur & Tech Réseau</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Infrastructure</span>
+                    <strong>Équipements Cisco</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Serveurs</span>
+                    <strong>Proxmox (Virtualisation)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Diffusion</span>
+                    <strong>Twitch & OBS</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contexte & Objectifs -->
+        <section class="project-section">
+            <h2>01. Le Défi Opérationnel</h2>
+            <p>
+                En ce début d'année 2026, j'ai eu la chance d'organiser la RT-LAN avec mes camarades de promotion. Notre objectif : mettre sur pied une compétition multi-gaming de A à Z avec un délai très court d'un mois, le tout en pleine période d'examens intenses.
+            </p>
+            <p>
+                Si l'organisation a parfois été mise à l'épreuve par ces contraintes, la forte cohésion de notre groupe, épaulée par le soutien précieux d'un parent d'organisateur expert en LAN, nous a permis de surmonter tous les obstacles logistiques.
+            </p>
             
-            <h3>Un défi d'organisation</h3>
-            <p>Malgré un délai très court d'un mois et une période d'examens intense, notre équipe a su se mobiliser pour créer un événement dont nous sommes particulièrement fiers. Si l'organisation a parfois été mise à l'épreuve, la cohésion de groupe et le soutien précieux d'un parent d'organisateur nous ont permis de surmonter tous les obstacles.</p>
+            <!-- EMPLACEMENT IMAGE 1 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Photo de la salle pendant l'événement ou de l'équipe d'organisation.</span>
+            </div>
+        </section>
 
-            <h3>La technique au cœur de notre formation</h3>
-            <p>En tant qu'étudiants en R&T, nous avons mis nos compétences théoriques en pratique :</p>
-            <ul>
-                <li>Conception et déploiement de l'infrastructure réseau (Cisco).</li>
-                <li>Configuration complète des serveurs de jeux (Proxmox).</li>
-                <li>Gestion technique du stream intégral sur Twitch.</li>
+        <!-- Stack Technique -->
+        <section class="project-section">
+            <h2>02. L'Infrastructure & Serveurs de Jeux</h2>
+            <p>
+                En tant qu'étudiants en Réseaux et Télécommunications (R&T), ce projet était l'occasion parfaite de mettre nos compétences théoriques en pratique sur un cas d'usage intensif. L'hébergement a été pensé pour répartir la charge et offrir l'expérience la plus fluide possible aux 30 joueurs :
+            </p>
+
+            <ul class="project-list">
+                <li><strong>Serveurs Counter-Strike :</strong> Déploiement de deux instances distinctes. Un serveur verrouillé et optimisé spécifiquement pour le tournoi compétitif, et un second serveur dédié à la détente avec différents mini-jeux.</li>
+                <li><strong>Architecture Minecraft (Hub & Mini-jeux) :</strong> Création d'une infrastructure multi-zones. Nous avons configuré un Hub principal servant de point d'ancrage, permettant aux joueurs de se rediriger dynamiquement vers différentes instances (Fallen Kingdom, Build Battle). Les mini-jeux ont été intégrés et paramétrés par notre équipe à partir de scripts existants.</li>
+                <li><strong>Jeux Indépendants & Trackmania :</strong> Gestion intelligente des ressources. Les plus petits jeux étaient hébergés en local directement sur notre hyperviseur <strong>Proxmox</strong>, tandis que les serveurs plus gourmands (comme Trackmania) tournaient sur des PC physiques performants dédiés à cet usage.</li>
+                <li><strong>Réseau Physique & Logique :</strong> Conception et déploiement de l'architecture réseau complète en utilisant des équipements <strong>Cisco</strong> pour relier et sécuriser l'ensemble de ces machines.</li>
             </ul>
 
-            <h3>Des résultats encourageants</h3>
-            <p>L’événement a généré une moyenne de 25 spectateurs en continu et un total de 400 vues uniques sur le week-end. Pour une première édition gérée de A à Z, ces chiffres sont une véritable victoire.</p>
+            <div class="tag-cloud">
+                <span class="tech-tag">Cisco IOS</span>
+                <span class="tech-tag">Proxmox VE</span>
+                <span class="tech-tag">Counter-Strike</span>
+                <span class="tech-tag">Minecraft (Hub/Scripts)</span>
+                <span class="tech-tag">Trackmania</span>
+                <span class="tech-tag">Routage / VLANs</span>
+            </div>
+        </section>
 
-            <h3>Vers une seconde édition</h3>
-            <p>Les retours positifs nous motivent à préparer une seconde édition avant la fin de l'année scolaire, pour clôturer en beauté notre cursus à Blois.</p>
-        </div>
-    </div>
+        <!-- Communication & Streaming -->
+        <section class="project-section">
+            <h2>03. Communication & Diffusion Twitch</h2>
+            <p>
+                Au-delà de la technique pure, nous avons géré l'intégralité de la communication autour de l'événement. Pour faire rayonner la RT-LAN au-delà des murs de la salle, nous avons mis en place une régie de streaming.
+            </p>
+            
+            <ul class="project-list">
+                <li>Gestion technique du stream intégral sur la plateforme <strong>Twitch</strong>.</li>
+                <li>Moyenne de <strong>25 spectateurs en continu</strong> sur plus de 30 heures de direct.</li>
+                <li>Un total de <strong>400 vues uniques</strong> cumulées sur le week-end.</li>
+            </ul>
+
+            <!-- EMPLACEMENT IMAGE 2 -->
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture d'écran du live Twitch ou photo de la régie de stream.</span>
+            </div>
+        </section>
+
+        <!-- Résultat Final -->
+        <section class="project-section">
+            <h2>04. Bilan & Perspectives</h2>
+            <p>
+                Pour une première édition gérée de manière totalement autonome par des étudiants, ces résultats sont une véritable victoire. L'événement s'est déroulé parfaitement et les retours des participants ont été unanimement positifs.
+            </p>
+
+            <div class="callout-box">
+                <strong>Vers une 2ème édition :</strong> Cette réussite nous motive sérieusement à préparer une seconde RT-LAN avant la fin de l'année scolaire, qui signera un bel au revoir à la ville de Blois et clôturera notre cursus R&T en beauté.
+            </div>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
