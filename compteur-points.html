@@ -2,29 +2,122 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Compteur de Points - Yanis D. B.</title>
+    <title>Dashboard & Bot de Gamification - Yanis D. B.</title>
 </head>
-<body class="page-detail">
-    <div class="container-narrow">
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
-        
-        <h1>Site Web & Bot Discord</h1>
-        
-        <div class="image-full">[PHOTO DU PROJET ICI]</div>
+<body>
 
-        <div class="text-block">
+    <canvas id="networkCanvas"></canvas>
+
+    <main class="project-container">
+        
+        <a href="index.html" style="color: var(--primary); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px;">← Retour à l'accueil</a>
+
+        <!-- En-tête / Présentation -->
+        <header class="project-header">
+            <div class="project-tagline">Architecture Serverless & Visualisation de Données</div>
+            <h1 class="project-title">Compteur de Points & Dashboard Interactif</h1>
+            <p class="project-summary">
+                Conception et déploiement d'un écosystème complet de gamification communautaire : un bot Discord serverless pour la saisie sécurisée d'événements, une base PostgreSQL managée avec contrôle d'accès granulaire, et un dashboard web interactif temps réel.
+            </p>
+
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span>Rôle</span>
+                    <strong>Développeur Full-Stack & DevOps</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Backend Serverless</span>
+                    <strong>Cloudflare Workers (JS)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Base de données</span>
+                    <strong>Supabase (PostgreSQL / RLS)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Frontend & Dataviz</span>
+                    <strong>Chart.js & Cloudflare Pages</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contexte & Objectifs -->
+        <section class="project-section">
+            <h2>01. Contexte & Enjeux</h2>
+            <p>
+                L'objectif était de concevoir un système automatisé de suivi d'activité et de points pour un groupe d'utilisateurs, sans dépendre d'un serveur d'hébergement traditionnel coûteux ou complexe à maintenir.
+            </p>
+            <p>
+                Le cahier des charges imposait une interaction fluide directement depuis Discord via des commandes slash discrètes (réponses éphémères), une persistance des données sécurisée, et une restitution graphique dynamique (classements anonymisés, répartition des actions et suivi temporel).
+            </p>
             
-<p>Pour faciliter nos soirées et jeux entre amis, j'ai développé de A à Z une solution combinant un site web et un bot Discord pour compter et suivre les scores en temps réel.</p>
-<h3>Fonctionnalités & Développement :</h3>
-<ul>
-    <li><strong>Interface Web :</strong> Développement d'un site web dynamique permettant d'ajouter, modifier ou consulter les scores via une interface claire et intuitive.</li>
-    <li><strong>Bot Discord :</strong> Programmation d'un bot permettant d'interagir avec la base de scores directement depuis nos serveurs textuels grâce à des commandes personnalisées.</li>
-    <li><strong>Base de données & API :</strong> Liaison entre le site web et le bot Discord pour que les données soient synchronisées en temps réel.</li>
-</ul>
-<p>Un projet très formateur sur la partie développement (Full-stack) et la communication entre différentes interfaces via des API.</p>
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Aperçu de la commande Discord /valider et du retour éphémère.</span>
+            </div>
+        </section>
 
-        </div>
-    </div>
+        <!-- Architecture & Backend -->
+        <section class="project-section">
+            <h2>02. Architecture Technique & Défis Résolus</h2>
+            <p>
+                L'infrastructure a été bâtie sur un modèle 100 % <em>Edge Computing</em> et <em>Serverless</em> pour garantir une latence minimale, une haute disponibilité et un coût nul :
+            </p>
+
+            <ul class="project-list">
+                <li><strong>Bot Discord Serverless (Cloudflare Workers) :</strong> Traitement asynchrone des requêtes HTTP signées cryptographiquement (Ed25519) émises par les interactions Discord, avec gestion des commandes à options multiples (validation unitaire ou groupée avec paramètre de quantité).</li>
+                <li><strong>Sécurité des Données (Supabase & RLS) :</strong> Segmentation stricte des privilèges via les politiques <em>Row Level Security</em> (RLS). Le dashboard public lit via une clé anonyme bridée en <code>SELECT</code>, tandis que le Worker manipule la base via un rôle privilégié sécurisé par clé secrète.</li>
+                <li><strong>Visualisation Dynamique (Chart.js) :</strong> Dashboard front-end affichant des graphiques dynamiques (diagrammes en barres, doughnut et courbes d'évolution temporelle avec gestion native des ruptures d'historique).</li>
+                <li><strong>Maintien en Disponibilité (Cron Triggers) :</strong> Automatisation d'une tâche planifiée (ping de veille programmé en Cron) pour éviter la mise en veille automatique de l'instance PostgreSQL gratuite en période creuse.</li>
+            </ul>
+
+            <div class="tag-cloud">
+                <span class="tech-tag">JavaScript ES6+</span>
+                <span class="tech-tag">Discord API v10</span>
+                <span class="tech-tag">Cloudflare Workers</span>
+                <span class="tech-tag">Supabase (PostgreSQL)</span>
+                <span class="tech-tag">Row Level Security (RLS)</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">Cron Triggers</span>
+            </div>
+        </section>
+
+        <!-- Fonctionnalités Utilisateur -->
+        <section class="project-section">
+            <h2>03. Fonctionnalités Déployées</h2>
+            <p>
+                Le système offre une expérience complète aux utilisateurs et administrateurs :
+            </p>
+            
+            <ul class="project-list">
+                <li><strong>Commandes Slash interactives :</strong> Enregistrement rapide d'actions (<code>/valider</code>) et consultation instantanée de son historique personnel détaillé sous forme de bilan confidentiel (<code>/points</code>).</li>
+                <li><strong>Double vue analytique :</strong> Mode consultation public avec pseudonymisation automatique des participants, et mode restreint avec levée d'anonymat et historique précis des évolutions.</li>
+                <li><strong>Fil d'actualité dynamique :</strong> Banderole animée avec défilement infini et calcul automatique d'alertes en fonction des écarts de score en tête de classement.</li>
+            </ul>
+
+            <div class="image-placeholder">
+                📸 [INSERER IMAGE ICI]
+                <span>Capture du dashboard analytique (Graphiques et banderole d'actualités).</span>
+            </div>
+        </section>
+
+        <!-- Bilan -->
+        <section class="project-section">
+            <h2>04. Compétences Acquises & Bilan</h2>
+            <p>
+                Ce projet a permis de concrétiser des problématiques concrètes d'architecture web moderne : sécurisation d'API sans état, modélisation relationnelle de données d'événements, gestion des permissions d'accès et optimisation des flux de rendu côté client.
+            </p>
+
+            <div class="callout-box">
+                <strong>Synthèse DevOps :</strong> Un écosystème robuste, maintenable et entièrement automatisé, déployé sans aucun coût d'infrastructure physique permanente.
+            </div>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
