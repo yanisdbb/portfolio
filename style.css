@@ -151,9 +151,19 @@ body {
 }
 
 .card-image {
-    height: 120px; /* Moins haut */
-    background: #e2e8f0;
-    border-radius: 10px;
+    height: 140px; /* Tu peux augmenter ou réduire cette valeur selon tes goûts */
+    width: 100%;
+    background: #e2e8f0; /* Couleur de fond si l'image ne charge pas */
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden; /* C'est ça qui empêche l'image de déborder ! */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Permet de remplir le cadre sans écraser ou étirer l'image */
+    display: block;
 }
 
 #networkCanvas {
