@@ -327,3 +327,31 @@ nav {
     color: #475569; 
     font-weight: 400; 
 }
+
+/* ========================================= */
+/* --- STYLE DES VRAIES PHOTOS PROJETS --- */
+/* ========================================= */
+
+.project-image-container {
+    margin: 30px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.project-img {
+    width: 100%;
+    max-height: 500px; /* Limite la hauteur pour ne pas prendre tout l'écran */
+    object-fit: cover; /* Coupe l'image proprement sans l'écraser */
+    border-radius: 15px; /* Les bords arrondis comme tes cartes */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Belle ombre douce */
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Petit contour brillant */
+}
+
+.image-caption {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+}
